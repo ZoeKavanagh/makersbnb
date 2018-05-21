@@ -1,17 +1,16 @@
-require 'capybara'
-require 'capybara/rspec'
-require 'rspec'
-require 'rake'
-require 'simplecov'
-require 'simplecov-console'
-
 ENV['RACK_ENV'] = 'test'
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
-Capybara.app = Makersbnb
+require 'capybara'
+require 'capybara/rspec'
+require 'rspec'
+require 'simplecov'
+require 'simplecov-console'
 
-Rake.application.load_rakefile
+p 'testing'
+
+Capybara.app = Makersbnb
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
