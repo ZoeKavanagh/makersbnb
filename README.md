@@ -5,11 +5,15 @@ A web application that allows users to list spaces they have available, and to h
 
 #User Stories
 ```sh
-As a renter,
-I want a list of places I can rent,
-So that I can consider which one I want
+AS A renter
+I WANT a list of places I can rent
+SO THAT I can consider which one I want
 
-As a renter,
-I want to be able to reserve a room,
-So that I can find out whether it\'s available 
+AS A renter,
+I WANT to be able to reserve a room,
+SO THAT I can find out whether it\'s available
+
+AS A letter,
+I WANT to add a room to the list,
+SO THAT renters know that it is available.
 ```
