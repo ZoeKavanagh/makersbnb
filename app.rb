@@ -7,12 +7,12 @@ load './data_mapper_setup.rb'
 class Makersbnb < Sinatra::Base
 
   configure do
-    use Rack::MethodOverride
-    register Sinatra::Flash
+    # use Rack::MethodOverride
+    # register Sinatra::Flash
   end
 
   get '/' do
-    'Hello World'
+    erb :index
   end
 
   run! if app_file == $0
