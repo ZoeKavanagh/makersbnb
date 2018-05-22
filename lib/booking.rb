@@ -1,14 +1,14 @@
+require 'data_mapper'
+
 class Booking
 
-  attr_reader :id, :from, :to, :status, :user_id, :room_id
+  include DataMapper::Resource
 
-  def initialize(id, from, to, status, user_id, room_id)
-    @id = id
-    @from = from
-    @to = to
-    @status = status
-    @user_id = user_id
-    @room_id = room_id
-  end
+  property :id, Serial
+  property :from, Date
+  property :to, Date
+  property :status, String
+  property :user_id, String
+  property :room_id, String
 
 end
