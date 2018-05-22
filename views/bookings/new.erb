@@ -1,0 +1,48 @@
+<%= erb :'components/header' %>
+
+<div class="ui text container">
+  <h1 class="ui inverted header">
+    Book a room
+  </h1>
+  <h2>Complete this form to reserve a room.</h2>
+</div>
+
+</div>
+
+
+<div class="ui middle aligned container">
+
+  <div class="ui hidden divider"></div>
+
+<form class="ui form">
+  <div class="inline fields">
+    <div class="one wide field"><label>Name</label></div>
+    <div class="five wide field"><input type="text" name="name" id="name-field"></div>
+  </div>
+
+  <div class="inline fields">
+    <div class="one wide field"><label>Start Date</label></div>
+    <div class="five wide field"><input type="text" name="start-date" id="start-date-field" placeholder="DD/MM/YY"></div>
+  </div>
+
+  <div class="inline fields">
+    <div class="one wide field"><label>End Date</label></div>
+    <div class="five wide field"><input type="text" name="end-date" id="end-date-field" placeholder="DD/MM/YY"></div>
+  </div>
+
+  <div class="inline fields">
+    <div class="one wide field"><label>Why do you want it?</label></div>
+    <div class="eight wide field"><textarea name="comments" id="comments-field" placeholder=""></textarea></div>
+  </div>
+
+  <div class="inline fields">
+    <div class="one wide field"></div>
+    <div class="ui checkbox eight wide field">
+      <input type="checkbox" tabindex="0" class="hidden">
+      <label>I agree to the Terms and Conditions</label>
+    </div>
+  </div>
+  <button class="ui button" type="submit" id="submit-button">Submit</button>
+</form>
+
+</div>
