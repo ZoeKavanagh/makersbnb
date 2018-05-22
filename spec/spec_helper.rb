@@ -8,8 +8,6 @@ require 'rspec'
 require 'simplecov'
 require 'simplecov-console'
 
-p 'testing'
-
 Capybara.app = Makersbnb
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
