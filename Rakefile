@@ -19,7 +19,13 @@ end
 task :setup do
 p "Creating databases..."
 
-  ['makersbnb_test, makersbnb'].each do |database|
+  ['makersbnb'].each do |database|
+    connection = PG.connect
+    connection.exec("CREATE DATABASE #{ database };")
+    connection = PG.connect(dbname: database)
+  end
+
+  ['makersbnb_test'].each do |database|
     connection = PG.connect
     connection.exec("CREATE DATABASE #{ database };")
     connection = PG.connect(dbname: database)
