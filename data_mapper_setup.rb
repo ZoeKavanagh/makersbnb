@@ -7,4 +7,7 @@ else
   DataMapper.setup(:default, 'postgres://localhost/makersbnb')
 end
 
+require './lib/booking'
+
 DataMapper.finalize()
+Booking.auto_upgrade!
