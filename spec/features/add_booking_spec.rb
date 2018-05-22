@@ -5,11 +5,13 @@ feature 'add booking' do
   end
 
   scenario 'fill in form' do
-    fill_in :name, with: 'Zoe'
-    fill_in :start_date, with: '25/05/2018'
-    fill_in :end_date, with: '26/05/2018'
-    fill_in :comments, with: 'I want a nice room for a night'
-    click_button 'Submit'
+    fill_in_and_submit
     expect(page).to have_content 'Booking received'
   end
+
+  scenario 'booking data added to database' do
+    fill_in_and_submit
+    expect(Booking.all.last).to be_instance_of(Booking)
+  end
+
 end
