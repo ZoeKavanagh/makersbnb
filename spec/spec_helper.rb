@@ -23,7 +23,7 @@ RSpec.configure do |config|
   config.before(:each) do
 end
 
-  config.before(:each) do
-    DataMapper.auto_migrate!
-  end
+config.before(:each) do
+  DataMapper.auto_migrate!
+end
 end

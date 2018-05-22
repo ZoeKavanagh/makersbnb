@@ -7,8 +7,9 @@ class Booking
   property :id, Serial
   property :from, Date
   property :to, Date
-  property :status, String
+  property :status, Enum[ :pending, :accepted, :declined], :default => :pending
   property :user_id, String
   property :room_id, String
+  property :comment, Text
 
 end

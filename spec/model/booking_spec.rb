@@ -4,7 +4,8 @@ describe Booking do
   let(:id) { 1 }
   let(:from) { '2018-06-12' }
   let(:to) { '2018-06-13' }
-  let(:status) { 'pending' }
+  let(:comment) { 'I need an amazing room, with a fridge full of champagne!' }
+  let(:status) { :pending }
   let(:user_id) { '2' }
   let(:room_id) { '3' }
 
@@ -12,10 +13,14 @@ describe Booking do
       id: id,
       from: from,
       to: to,
-      status: status,
       user_id: user_id,
-      room_id: room_id
+      room_id: room_id,
+      comment: comment
     ) }
+
+  before do
+    test_booking
+  end
 
   describe '#create' do
 
@@ -31,7 +36,7 @@ describe Booking do
       expect(test_booking.to.to_date.to_s).to eq to
     end
 
-    it 'returns object with status attribute' do
+    it 'returns object with default pending status attribute' do
       expect(test_booking.status).to eq status
     end
 
@@ -41,6 +46,10 @@ describe Booking do
 
     it 'returns object with room id attribute' do
       expect(test_booking.room_id).to eq room_id
+    end
+
+    it 'returns object with comments attribute ' do
+      expect(test_booking.comment).to eq comment
     end
 
   end
