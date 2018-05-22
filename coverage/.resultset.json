@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/charlenechetcuti/Desktop/makersbnb/spec/model/booking_spec.rb": [
+      "/Users/benfurber/github/makers/makersbnb/spec/model/booking_spec.rb": [
         1,
         null,
         1,
@@ -68,7 +68,7 @@
         null,
         null
       ],
-      "/Users/charlenechetcuti/Desktop/makersbnb/lib/booking.rb": [
+      "/Users/benfurber/github/makers/makersbnb/lib/booking.rb": [
         1,
         null,
         1,
@@ -85,7 +85,7 @@
         null,
         null
       ],
-      "/Users/charlenechetcuti/Desktop/makersbnb/spec/views/index_spec.rb": [
+      "/Users/benfurber/github/makers/makersbnb/spec/views/index_spec.rb": [
         1,
         null,
         1,
@@ -99,6 +99,6 @@
         null
       ]
     },
-    "timestamp": 1526990893
+    "timestamp": 1526991434
   }
 }
