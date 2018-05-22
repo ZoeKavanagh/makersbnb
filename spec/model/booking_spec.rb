@@ -10,7 +10,6 @@ describe Booking do
   let(:room_id) { '3' }
 
   let(:test_booking) { Booking.create(
-      id: id,
       from: from,
       to: to,
       user_id: user_id,

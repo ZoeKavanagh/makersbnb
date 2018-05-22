@@ -20,6 +20,13 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/bookings/new' do
+    Booking.create(
+        from: params[:start_date],
+        to: params[:end_date],
+        user_id: '1',
+        room_id: '1',
+        comment: params[:comments]
+      )
     redirect '/bookings/requests'
   end
 
