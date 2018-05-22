@@ -25,6 +25,26 @@ feature 'index page' do
     scenario 'reserve room menu item is visible' do
       expect(page).to have_css('a#reserve-room-menu-item')
     end
+
+    scenario 'tagline is visible' do
+      expect(page).to have_content('Need a room? We\'ve got rooms.')
+    end
+
+    scenario 'at least one room is visible' do
+      expect(page).to have_css('.room')
+    end
+
+    scenario 'reserve link is visible' do
+      expect(page).to have_xpath(".//a[@href = '/reserve']")
+    end
+
+    scenario 'available room has a title' do
+      expect(page).to have_css('.room .content .header')
+    end
+
+    scenario 'available room has a description' do
+      expect(page).to have_css('.room .content .description')
+    end
   end
 
 end
