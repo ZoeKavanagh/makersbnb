@@ -35,7 +35,7 @@ feature 'index page' do
     end
 
     scenario 'reserve link is visible' do
-      expect(page).to have_xpath(".//a[@href = '/reserve']")
+      expect(page).to have_xpath(".//a[@href = '/bookings/new']")
     end
 
     scenario 'available room has a title' do
