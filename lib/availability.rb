@@ -18,4 +18,10 @@ class Availability
     dates
   end
 
+  def self.create_dates(array, room_id)
+    array.each do |date|
+      Availability.create(date: date, room_id: room_id)
+    end
+  end
+
 end

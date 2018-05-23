@@ -2,8 +2,6 @@ require 'availability'
 require 'room'
 
 describe Availability do
-  subject(:availability) { described_class.new }
-
   let(:id) { 1 }
   let(:date) { '2018-05-25' }
   let(:room_id) { 1 }
@@ -24,8 +22,7 @@ describe Availability do
     test_slot
   end
 
-  describe '#create' do
-
+  context '#create' do
     it 'returns object with id attribute' do
       expect(test_slot.id).to eq id
     end
@@ -39,8 +36,7 @@ describe Availability do
     end
   end
 
-  describe '#dates_calculation' do
-
+  context '#dates_calculation' do
     it 'should take two dates and return an array of all the days between the dates' do
       all_the_dates = [
         Date.strptime(start_date, "%Y-%m-%d"),
@@ -48,6 +44,14 @@ describe Availability do
         Date.strptime(end_date, "%Y-%m-%d")
        ]
       expect(availability.dates_calculation(start_date, end_date)).to eq all_the_dates
+    end
+  end
+
+  context '#create_dates' do
+    it 'should take an array of dates and create a slot for each' do
+      new_date = '2018-06-02'
+      new_slot = Availability.create_dates([new_date], room_id)
+      expect(Availability.all.last.date).to eq Date.strptime(new_date, "%Y-%m-%d")
     end
   end
 end
