@@ -1,0 +1,31 @@
+<%= erb :'components/header' %>
+
+<div class="ui text container">
+  <h1 class="ui inverted header">
+    Sign In
+  </h1>
+  <h2>Already a member? Sign in to get started!</h2>
+</div>
+
+</div>
+
+<div class="ui middle aligned container">
+
+  <div class="ui hidden divider"></div>
+
+<form action="/sessions/new" method="post" class="ui form">
+
+  <div class="inline fields">
+    <div class="one wide field"><label>Email</label></div>
+    <div class="eight wide field"><input name="email" id="email-field" placeholder="user@email.com"></div>
+  </div>
+
+  <div class="inline fields">
+    <div class="one wide field"><label>Password</label></div>
+    <div class="five wide field"><input type="password" name="password" id="password-field" placeholder=""></div>
+  </div>
+
+  <button class="ui button" type="submit" id="submit-button">Submit</button>
+</form>
+
+</div>
