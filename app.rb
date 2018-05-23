@@ -1,4 +1,5 @@
 require './lib/booking'
+require './lib/availability'
 require './lib/room'
 require './lib/user'
 require 'data_mapper'
@@ -44,14 +45,19 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/rooms/new' do
-    Room.create(
-        name: params[:name],
-        location: params[:location],
-        description: params[:description],
-        from: params[:start_date],
-        to: params[:end_date],
-        user_id: '1',
-      )
+    new_room = Room.create(
+      name: params[:name],
+      location: params[:location],
+      description: params[:description],
+      from: params[:start_date],
+      to: params[:end_date],
+      user_id: '1',
+    )
+    all_dates = Availability.dates_calculation(
+      params[:start_date],
+      params[:end_date]
+    )
+    Availability.create_dates(all_dates, new_room.id)
     redirect '/rooms/requests'
   end
 

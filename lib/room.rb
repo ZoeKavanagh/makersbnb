@@ -1,5 +1,4 @@
 require 'data_mapper'
-require 'availability'
 
 class Room
 
