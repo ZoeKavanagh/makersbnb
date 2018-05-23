@@ -12,4 +12,6 @@ class Room
   property :to, Date
   property :user_id, String
 
+
+
 end
