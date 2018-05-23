@@ -8,11 +8,11 @@ require 'sinatra/flash'
 load './data_mapper_setup.rb'
 
 class Makersbnb < Sinatra::Base
-  enable :sessions
 
   configure do
-    # use Rack::MethodOverride
-    # register Sinatra::Flash
+    enable :sessions
+    use Rack::MethodOverride
+    register Sinatra::Flash
   end
 
   get '/' do
@@ -63,11 +63,14 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/users/new' do
-    User.create(
+    @user = User.create(
       name: params[:name],
       email: params[:email],
       password: params[:password]
     )
+
+    session[:user_name] = @user.name
+    flash[:notice] = "Welcome #{session[:user_name]}"
     redirect '/users/requests'
   end
 
