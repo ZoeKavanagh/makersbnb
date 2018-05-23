@@ -30,7 +30,7 @@ feature 'index page' do
       expect(page).to have_content('Need a room? We\'ve got rooms.')
     end
 
-    scenario 'at least one room is visible' do
+    xscenario 'at least one room is visible' do
       expect(page).to have_css('.room')
     end
 
@@ -38,11 +38,11 @@ feature 'index page' do
       expect(page).to have_xpath(".//a[@href = '/bookings/new']")
     end
 
-    scenario 'available room has a title' do
+    xscenario 'available room has a title' do
       expect(page).to have_css('.room .content .header')
     end
 
-    scenario 'available room has a description' do
+    xscenario 'available room has a description' do
       expect(page).to have_css('.room .content .description')
     end
   end

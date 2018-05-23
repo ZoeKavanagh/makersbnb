@@ -16,6 +16,7 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/' do
+    @rooms = Room.all
     erb :index
   end
 
