@@ -10,5 +10,6 @@ end
 DataMapper.finalize()
 
 Booking.auto_upgrade!
+Availability.auto_upgrade!
 Room.auto_upgrade!
 User.auto_upgrade!

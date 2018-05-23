@@ -1,7 +1,7 @@
 require './lib/booking'
+require './lib/availability'
 require './lib/room'
 require './lib/user'
-require './lib/availability'
 require 'data_mapper'
 require 'sinatra'
 require 'sinatra/base'

@@ -26,8 +26,6 @@ feature 'adding a room' do
   end
 
   scenario 'availability data added to database' do
-    Date.strptime(end_date, "%Y-%m-%d")
-    Date.strptime(start_date, "%Y-%m-%d")
     number_of_dates = Date.strptime(end_date, "%Y-%m-%d").day - Date.strptime(start_date, "%Y-%m-%d").day + 1
     rooms_fill_in_and_submit(name, location, description, start_date, end_date)
     expect(Availability.all.last).to be_instance_of(Availability)
