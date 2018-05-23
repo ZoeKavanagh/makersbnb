@@ -43,7 +43,7 @@ describe Availability do
         Date.strptime(date_inbetween, "%Y-%m-%d"),
         Date.strptime(end_date, "%Y-%m-%d")
        ]
-      expect(availability.dates_calculation(start_date, end_date)).to eq all_the_dates
+      expect(Availability.dates_calculation(start_date, end_date)).to eq all_the_dates
     end
   end
 

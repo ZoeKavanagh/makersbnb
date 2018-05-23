@@ -9,7 +9,7 @@ class Availability
 
   belongs_to :room
 
-  def dates_calculation(start_date, end_date)
+  def self.dates_calculation(start_date, end_date)
     start_date = Date.strptime(start_date, "%Y-%m-%d")
     dates = [start_date]
     until dates.last == Date.strptime(end_date, "%Y-%m-%d")
