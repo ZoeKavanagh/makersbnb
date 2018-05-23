@@ -7,6 +7,8 @@ else
   DataMapper.setup(:default, 'postgres://localhost/makersbnb')
 end
 
+DataMapper::Property::String.length(255)
+
 DataMapper.finalize()
 
 Booking.auto_upgrade!
