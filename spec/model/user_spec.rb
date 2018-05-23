@@ -3,11 +3,13 @@ require 'user'
 describe User do
 
   let(:id) { 1 }
+  let(:name) {'Chloe'}
   let(:email) {'user@gmail.com'}
-  let(:password) { 'fish1234'}
+  let(:password) {'fish1234'}
 
   let(:test_user) { User.create(
     id: id,
+    name: name,
     email: email,
     password: password
     )}
@@ -19,6 +21,10 @@ describe User do
   context '#create' do
     it 'returns object with id attribute' do
       expect(test_user.id).to eq id
+    end
+
+    it 'returns object with name attribute' do
+      expect(test_user.name).to eq name
     end
 
     it 'returns an object with an email atrribute' do

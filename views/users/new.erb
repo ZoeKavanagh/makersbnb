@@ -1,0 +1,51 @@
+<%= erb :'components/header' %>
+
+<div class="ui text container">
+  <h1 class="ui inverted header">
+    Sign Up
+  </h1>
+  <h2>Complete this form to become a member of this amazing community!</h2>
+  <h3>We promise we won't bombard you with emails (yet!)</h3>
+</div>
+
+</div>
+
+
+<div class="ui middle aligned container">
+
+  <div class="ui hidden divider"></div>
+
+<form action="/users/new" method="post" class="ui form">
+
+
+  <div class="inline fields">
+    <div class="one wide field"><label>Name</label></div>
+    <div class="eight wide field"><input name="name" id="name-field" placeholder="Name"></div>
+  </div>
+
+  <div class="inline fields">
+    <div class="one wide field"><label>Email</label></div>
+    <div class="eight wide field"><input name="email" id="email-field" placeholder="user@email.com"></div>
+  </div>
+
+  <div class="inline fields">
+    <div class="one wide field"><label>Password</label></div>
+    <div class="five wide field"><input type="password" name="password" id="password-field" placeholder=""></div>
+  </div>
+
+  <div class="inline fields">
+    <div class="one wide field"><label>Confirm Password</label></div>
+    <div class="five wide field"><input type="password" name="confirm-password" id="confirm-password-field" placeholder=""></div>
+  </div>
+
+  <div class="inline fields">
+    <div class="one wide field"></div>
+    <div class="ui checkbox eight wide field">
+      <input type="checkbox" tabindex="0" class="hidden">
+      <label>I agree to the Terms and Conditions</label>
+    </div>
+  </div>
+  <button class="ui button" type="submit" id="submit-button">Submit</button>
+</form>
+
+</div>

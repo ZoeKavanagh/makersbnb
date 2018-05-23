@@ -62,5 +62,19 @@ class Makersbnb < Sinatra::Base
     erb :'users/new'
   end
 
+  post '/users/new' do
+    User.create(
+      name: params[:name],
+      email: params[:email],
+      password: params[:password]
+    )
+    redirect '/users/requests'
+  end
+
+  get '/users/requests' do
+    erb :'users/requests'
+  end
+
+
   run! if app_file == $0
 end
