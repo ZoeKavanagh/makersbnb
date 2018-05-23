@@ -1,5 +1,6 @@
 require './lib/booking'
 require './lib/room'
+require './lib/user'
 require 'data_mapper'
 require 'sinatra'
 require 'sinatra/base'
@@ -7,6 +8,7 @@ require 'sinatra/flash'
 load './data_mapper_setup.rb'
 
 class Makersbnb < Sinatra::Base
+  enable :sessions
 
   configure do
     # use Rack::MethodOverride
@@ -54,6 +56,10 @@ class Makersbnb < Sinatra::Base
 
   get '/rooms/requests' do
     erb :'rooms/requests'
+  end
+
+  get '/users/new' do
+    erb :'users/new'
   end
 
   run! if app_file == $0
