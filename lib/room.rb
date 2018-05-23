@@ -1,4 +1,5 @@
 require 'data_mapper'
+require 'availability'
 
 class Room
 
@@ -11,5 +12,7 @@ class Room
   property :from, Date
   property :to, Date
   property :user_id, String
+
+  has n, :availability
 
 end
