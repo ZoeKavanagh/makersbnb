@@ -5,7 +5,10 @@
     <title>makersbnb</title>
     <link rel="stylesheet" type="text/css" href="../css/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="../css/custom.css">
+    <link rel="stylesheet" type="text/css" href="../css/calendar.css">
     <script src="../js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="../js/calendar.js"></script>
 
    <script src="../css/components/visibility.js"></script>
    <script src="../css/components/sidebar.js"></script>
@@ -32,6 +35,16 @@
        $('.ui.sidebar')
          .sidebar('attach events', '.toc.item')
        ;
+
+       $('#rangestart').calendar({
+         type: 'date',
+         endCalendar: $('#rangeend')
+       });
+       $('#rangeend').calendar({
+         type: 'date',
+         startCalendar: $('#rangestart')
+       });
+
 
      })
    ;
