@@ -70,11 +70,11 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/users/new' do
-    pass = User.crypt_password(params[:password])
-    p @user = User.create(
+
+    @user = User.create(
       name: params[:name],
       email: params[:email],
-      password: pass
+      password: params[:password]
     )
 
     session[:user_name] = @user.name
