@@ -17,7 +17,7 @@ if ENV['RACK_ENV'] != 'production'
 end
 
 task :setup do
-p "Creating databases..."
+  p "Creating databases..."
 
   ['makersbnb'].each do |database|
     connection = PG.connect
@@ -29,5 +29,14 @@ p "Creating databases..."
     connection = PG.connect
     connection.exec("CREATE DATABASE #{ database };")
     connection = PG.connect(dbname: database)
+  end
+end
+
+task :drop_databases do
+  p "Destroying makersbnb databases. This will remove all data in those databases!"
+
+  ['makersbnb', 'makersbnb_test'].each do |database|
+    connection = PG.connect
+    connection.exec("DROP DATABASE #{ database }")
   end
 end
