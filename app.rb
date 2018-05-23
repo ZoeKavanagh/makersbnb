@@ -79,6 +79,23 @@ class Makersbnb < Sinatra::Base
     erb :'users/requests'
   end
 
+  get '/sessions/new' do
+    erb :'sessions/new'
+  end
+
+  post '/sessions/new' do
+    @user = User.first(email: params[:email], password: params[:password])
+
+    if @user
+      session[:user_id] = @user.id
+      redirect('/')
+    else
+      flash[:notice] = 'Username or password incorrect. Access denied. denied.'
+      redirect('/sessions/new')
+    end
+
+  end
+
 
   run! if app_file == $0
 end
