@@ -1,5 +1,8 @@
 require 'pg'
 
+the_databases = ['makersbnb', 'makersbnb_test']
+
+
 if ENV['RACK_ENV'] != 'production'
   require 'rspec/core/rake_task'
 
@@ -8,35 +11,17 @@ if ENV['RACK_ENV'] != 'production'
   task default: [:spec]
 
   task :test_database_setup do
-  # p "Cleaning database..."
-
-  connection = PG.connect(dbname: 'makersbnb_test')
-  # connection.exec("TRUNCATE booking;")
+    connection = PG.connect(dbname: the_databases[1])
   end
-
 end
 
 task :setup do
-  p "Creating databases..."
+  connection = PG.connect
 
-  ['makersbnb'].each do |database|
-    connection = PG.connect
-    connection.exec("CREATE DATABASE #{ database };")
-    connection = PG.connect(dbname: database)
-  end
+  p "Destroying #{the_databases[0]} and recreating it..."
 
-  ['makersbnb_test'].each do |database|
-    connection = PG.connect
-    connection.exec("CREATE DATABASE #{ database };")
-    connection = PG.connect(dbname: database)
-  end
-end
+  connection.exec("DROP DATABASE #{the_databases[0]};")
+  connection.exec("CREATE DATABASE #{the_databases[0]};")
 
-task :drop_databases do
-  p "Destroying makersbnb databases. This will remove all data in those databases!"
-
-  ['makersbnb', 'makersbnb_test'].each do |database|
-    connection = PG.connect
-    connection.exec("DROP DATABASE #{ database }")
-  end
+  p "All done."
 end
