@@ -21,8 +21,6 @@ feature 'adding a room' do
     expect(Room.all.last.name).to eq name
     expect(Room.all.last.location).to eq location
     expect(Room.all.last.description).to eq description
-    expect(Room.all.last.from.strftime("%Y-%m-%d")).to eq start_date
-    expect(Room.all.last.to.strftime("%Y-%m-%d")).to eq end_date
   end
 
   scenario 'availability data added to database' do
@@ -31,5 +29,11 @@ feature 'adding a room' do
     expect(Availability.all.last).to be_instance_of(Availability)
     expect(Availability.all.last.date).to eq Date.strptime(end_date, "%Y-%m-%d")
     expect(Availability.all.length).to eq number_of_dates
+  end
+
+  scenario 'raise error when date format incorrect' do
+    expect {
+      rooms_fill_in_and_submit(name, location, description, 'Thursday', '2020/25/02')
+    }.to raise_error("Issue with format of date, must be yyyy-mm-dd")
   end
 end

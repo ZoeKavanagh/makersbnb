@@ -18,33 +18,32 @@
    $(document)
      .ready(function() {
 
-       // fix menu when passed
-       $('.masthead')
-         .visibility({
-           once: false,
-           onBottomPassed: function() {
-             $('.fixed.menu').transition('fade in');
-           },
-           onBottomPassedReverse: function() {
-             $('.fixed.menu').transition('fade out');
-           }
-         })
-       ;
-
-       // create sidebar and attach to menu open
-       $('.ui.sidebar')
-         .sidebar('attach events', '.toc.item')
-       ;
-
        $('#rangestart').calendar({
          type: 'date',
-         endCalendar: $('#rangeend')
+         endCalendar: $('#rangeend'),
+         formatter: {
+           date: function (date, settings) {
+             if (!date) return '';
+             var day = date.getDate();
+             var month = date.getMonth() + 1;
+             var year = date.getFullYear();
+             return year + '-' + month + '-' + day;
+           }
+         }
        });
        $('#rangeend').calendar({
          type: 'date',
-         startCalendar: $('#rangestart')
+         startCalendar: $('#rangestart'),
+         formatter: {
+           date: function (date, settings) {
+             if (!date) return '';
+             var day = date.getDate();
+             var month = date.getMonth() + 1;
+             var year = date.getFullYear();
+             return year + '-' + month + '-' + day;
+           }
+         }
        });
-
 
      })
    ;

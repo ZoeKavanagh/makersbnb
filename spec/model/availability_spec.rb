@@ -36,22 +36,28 @@ describe Availability do
     end
   end
 
-  context '#dates_calculation' do
-    it 'should take two dates and return an array of all the days between the dates' do
+  context '#create_dates' do
+    it 'should take an array of dates and create a slot for each' do
       all_the_dates = [
         Date.strptime(start_date, "%Y-%m-%d"),
         Date.strptime(date_inbetween, "%Y-%m-%d"),
         Date.strptime(end_date, "%Y-%m-%d")
        ]
-      expect(Availability.dates_calculation(start_date, end_date)).to eq all_the_dates
+      new_slot = Availability.create_dates(start_date, end_date, room_id)
+      expect(Availability.all.last.date).to eq all_the_dates[2]
     end
   end
 
-  context '#create_dates' do
-    it 'should take an array of dates and create a slot for each' do
-      new_date = '2018-06-02'
-      new_slot = Availability.create_dates([new_date], room_id)
-      expect(Availability.all.last.date).to eq Date.strptime(new_date, "%Y-%m-%d")
+  context '#valid_dates?' do
+    it 'should return true when given dates in the correct format' do
+      expect {
+        Availability.valid_dates?([start_date, end_date])
+      }.to_not raise_error
+    end
+    it 'should return an error when any given date is in the wrong format' do
+      expect {
+        Availability.valid_dates?([start_date, '55555'])
+      }.to raise_error("Issue with format of date, must be yyyy-mm-dd")
     end
   end
 end
