@@ -22,6 +22,10 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/bookings/new' do
+    if session[:user_id] == nil
+      flash[:notice] = 'Cannot make booking if not logged in'
+      redirect '/sessions/new'
+    end
     erb :'bookings/new'
   end
 
@@ -102,7 +106,7 @@ class Makersbnb < Sinatra::Base
 
   post '/sessions/destroy' do
     session.clear
-    p session[:user_id]
+    session[:user_id]
     flash[:notice] = 'You have signed out.'
     redirect('/')
   end

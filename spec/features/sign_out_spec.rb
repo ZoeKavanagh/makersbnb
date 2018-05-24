@@ -8,7 +8,7 @@ feature 'sign_out' do
   let(:email) { 'chloe@gmail.com' }
   let(:password) { 'fish1234'}
 
-  fscenario 'user can log-out' do
+  scenario 'user can log-out' do
     visit '/'
     click_link 'Sign up'
     sign_up_and_submit(name, email, password)
