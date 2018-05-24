@@ -1,8 +1,8 @@
 $(document).ready(function() {
   var dateFormatter = function (date, settings) {
     if (!date) return '';
-    var day = date.getDate();
-    var month = date.getMonth() + 1;
+    var day = (date.getDate() < 10 ? '0' : '') + date.getDate();
+    var month = (date.getMonth() < 10 ? '0' : '') + (date.getMonth() + 1);
     var year = date.getFullYear();
     return year + '-' + month + '-' + day;
   };
