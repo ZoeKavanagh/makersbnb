@@ -59,10 +59,23 @@
         <div class="ui container">
           <div class="ui large secondary inverted pointing menu">
             <a href=""><img src="../images/logo.png" alt="makersbnb" width="40px" height="40px" id="logo" /></a>
+            <% if session[:user_name] %>
+            <%= "Welcome #{session[:user_name]}" %>
+            <% end %>
             <div class="right item">
               <a href="/" id="home-menu-item" class="item"><i class="home icon"></i> Home</a>
-              <a href="/rooms/new" id="add-room-menu-item" class="item"><i class="add icon"></i> Add a room</a>
-              <a href="/bookings/new" id="reserve-room-menu-item" class="item"><i class="calendar outline icon"></i> Book a room</a>
+              <% if session[:user_name] %>
+                <a href="/rooms/new" id="add-room-menu-item" class="item"><i class="add icon"></i> Add a room</a>
+                <a href="/bookings/new" id="reserve-room-menu-item" class="item"><i class="calendar outline icon"></i> Book a room</a>
+                <form id="myHiddenFormId" action="/sessions/destroy" method="post">
+                  <input type="hidden" name="myParameterName" value="myParameterValue">
+                  <button class="ui button" type="submit" id="submit-button"><i class="calendar sign out icon"></i> Sign-out</button>
+                </form>
+              <% end %>
+              <% if !session[:user_name] %>
+                <a href="/users/new" id="sign-up-item" class="item"><i class="user icon"></i> Sign up</a>
+                <a href="/sessions/new" id="sign-in-item" class="item"><i class="sign in alternate icon"></i> Sign in</a>
+              <% end %>
             </div>
             <!-- <div class="right item">
               <a class="ui inverted button">Log in</a>
