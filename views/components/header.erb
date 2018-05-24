@@ -9,45 +9,11 @@
     <script src="../js/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
     <script src="../js/calendar.js"></script>
+    <script src="../js/calendarInstance.js"></script>
 
    <script src="../css/components/visibility.js"></script>
    <script src="../css/components/sidebar.js"></script>
    <script src="../css/components/transition.js"></script>
-
-   <script>
-   $(document)
-     .ready(function() {
-
-       $('#rangestart').calendar({
-         type: 'date',
-         endCalendar: $('#rangeend'),
-         formatter: {
-           date: function (date, settings) {
-             if (!date) return '';
-             var day = date.getDate();
-             var month = date.getMonth() + 1;
-             var year = date.getFullYear();
-             return year + '-' + month + '-' + day;
-           }
-         }
-       });
-       $('#rangeend').calendar({
-         type: 'date',
-         startCalendar: $('#rangestart'),
-         formatter: {
-           date: function (date, settings) {
-             if (!date) return '';
-             var day = date.getDate();
-             var month = date.getMonth() + 1;
-             var year = date.getFullYear();
-             return year + '-' + month + '-' + day;
-           }
-         }
-       });
-
-     })
-   ;
-   </script>
 
   </head>
   <body>
