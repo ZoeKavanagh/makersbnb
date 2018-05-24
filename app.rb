@@ -45,19 +45,16 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/rooms/new' do
+    Availability.valid_dates?([params[:start_date], params[:end_date]])
+
     new_room = Room.create(
       name: params[:name],
       location: params[:location],
       description: params[:description],
-      from: params[:start_date],
-      to: params[:end_date],
       user_id: '1',
     )
-    all_dates = Availability.dates_calculation(
-      params[:start_date],
-      params[:end_date]
-    )
-    Availability.create_dates(all_dates, new_room.id)
+    Availability.create_dates(params[:start_date], params[:end_date], new_room.id)
+    
     redirect '/rooms/requests'
   end
 
@@ -101,7 +98,6 @@ class Makersbnb < Sinatra::Base
     end
 
   end
-
 
   run! if app_file == $0
 end

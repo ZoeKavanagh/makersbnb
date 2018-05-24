@@ -5,7 +5,10 @@
     <title>makersbnb</title>
     <link rel="stylesheet" type="text/css" href="../css/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="../css/custom.css">
+    <link rel="stylesheet" type="text/css" href="../css/calendar.css">
     <script src="../js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="../js/calendar.js"></script>
 
    <script src="../css/components/visibility.js"></script>
    <script src="../css/components/sidebar.js"></script>
@@ -15,23 +18,32 @@
    $(document)
      .ready(function() {
 
-       // fix menu when passed
-       $('.masthead')
-         .visibility({
-           once: false,
-           onBottomPassed: function() {
-             $('.fixed.menu').transition('fade in');
-           },
-           onBottomPassedReverse: function() {
-             $('.fixed.menu').transition('fade out');
+       $('#rangestart').calendar({
+         type: 'date',
+         endCalendar: $('#rangeend'),
+         formatter: {
+           date: function (date, settings) {
+             if (!date) return '';
+             var day = date.getDate();
+             var month = date.getMonth() + 1;
+             var year = date.getFullYear();
+             return year + '-' + month + '-' + day;
            }
-         })
-       ;
-
-       // create sidebar and attach to menu open
-       $('.ui.sidebar')
-         .sidebar('attach events', '.toc.item')
-       ;
+         }
+       });
+       $('#rangeend').calendar({
+         type: 'date',
+         startCalendar: $('#rangestart'),
+         formatter: {
+           date: function (date, settings) {
+             if (!date) return '';
+             var day = date.getDate();
+             var month = date.getMonth() + 1;
+             var year = date.getFullYear();
+             return year + '-' + month + '-' + day;
+           }
+         }
+       });
 
      })
    ;

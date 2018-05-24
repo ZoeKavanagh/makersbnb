@@ -9,6 +9,24 @@ class Availability
 
   belongs_to :room
 
+  def self.create_dates(start_date, end_date, room_id)
+    array = self.dates_calculation(start_date, end_date)
+    array.each do |date|
+      Availability.create(date: date, room_id: room_id)
+    end
+  end
+
+  def self.valid_dates?(array)
+    array.each do |date|
+      unless !!(date.match(/\d{4}-\d{2}-\d{2}/) && Date.strptime(date, "%Y-%m-%d") )
+        raise "Issue with format of date, must be yyyy-mm-dd"
+      end
+    end
+    true
+  end
+
+  private
+
   def self.dates_calculation(start_date, end_date)
     start_date = Date.strptime(start_date, "%Y-%m-%d")
     dates = [start_date]
@@ -17,11 +35,4 @@ class Availability
     end
     dates
   end
-
-  def self.create_dates(array, room_id)
-    array.each do |date|
-      Availability.create(date: date, room_id: room_id)
-    end
-  end
-
 end

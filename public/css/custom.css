@@ -87,7 +87,10 @@
   width: 100% !important;
 }
 
-
 #logo {
   margin: 1em;
+}
+
+.ui-draggable, .ui-droppable {
+	background-position: top;
 }
