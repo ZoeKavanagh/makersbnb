@@ -18,33 +18,10 @@ feature 'index page' do
       expect(page).to have_css('a#home-menu-item')
     end
 
-    scenario 'add room menu item is visible' do
-      expect(page).to have_css('a#add-room-menu-item')
-    end
-
-    scenario 'reserve room menu item is visible' do
-      expect(page).to have_css('a#reserve-room-menu-item')
-    end
-
     scenario 'tagline is visible' do
       expect(page).to have_content('Need a room? We\'ve got rooms.')
     end
 
-    # xscenario 'at least one room is visible' do
-    #   expect(page).to have_css('.room')
-    # end
-
-    scenario 'reserve link is visible' do
-      expect(page).to have_xpath(".//a[@href = '/bookings/new']")
-    end
-
-    # xscenario 'available room has a title' do
-    #   expect(page).to have_css('.room .content .header')
-    # end
-    #
-    # xscenario 'available room has a description' do
-    #   expect(page).to have_css('.room .content .description')
-    # end
   end
 
 end

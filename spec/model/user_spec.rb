@@ -42,9 +42,4 @@ describe User do
     end
   end
 
-  xdescribe '#crypt_password' do
-    it 'returns a hashed password' do
-      expect(User.crypt_password(password)).to eq(password)
-    end
-  end
 end

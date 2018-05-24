@@ -54,7 +54,7 @@ class Makersbnb < Sinatra::Base
       user_id: '1',
     )
     Availability.create_dates(params[:start_date], params[:end_date], new_room.id)
-    
+
     redirect '/rooms/requests'
   end
 
@@ -68,15 +68,14 @@ class Makersbnb < Sinatra::Base
 
   post '/users/new' do
 
-    p @user = User.create(
+    @user = User.create(
       name: params[:name],
       email: params[:email],
       password: params[:password]
     )
 
-    session[:user_name] = @user.name
-    flash[:notice] = "Welcome #{session[:user_name]}"
-    redirect '/users/requests'
+    flash[:notice] = "You have signed up. Please sign in!"
+    redirect '/'
   end
 
   get '/users/requests' do
@@ -88,16 +87,24 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/sessions/new' do
-    @user = User.first(email: params[:email], password: params[:password])
+    @user = User.first(email: params[:email])
 
-    if @user
+    if @user && (@user.password == params[:password])
       session[:user_id] = @user.id
+      session[:user_name] = @user.name
       redirect('/')
     else
       flash[:notice] = 'Username or password incorrect. Access denied. denied.'
       redirect('/sessions/new')
     end
 
+  end
+
+  post '/sessions/destroy' do
+    session.clear
+    p session[:user_id]
+    flash[:notice] = 'You have signed out.'
+    redirect('/')
   end
 
   run! if app_file == $0
