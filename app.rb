@@ -33,7 +33,7 @@ class Makersbnb < Sinatra::Base
     Booking.create(
         from: params[:start_date],
         to: params[:end_date],
-        user_id: '1',
+        user_id: session[:user_id],
         room_id: '1',
         comment: params[:comments]
       )
@@ -55,7 +55,7 @@ class Makersbnb < Sinatra::Base
       name: params[:name],
       location: params[:location],
       description: params[:description],
-      user_id: '1',
+      user_id: session[:user_id],
     )
     Availability.create_dates(params[:start_date], params[:end_date], new_room.id)
 
