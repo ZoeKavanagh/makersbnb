@@ -7,10 +7,3 @@ def rooms_fill_in_and_submit(name, location, description, start_date, end_date)
   fill_in :end_date, with: end_date
   click_button 'Submit'
 end
-
-def add_room_direct_to_db
-  @connection.exec(
-    "INSERT INTO rooms VALUES (
-    DEFAULT, 'Test room', 'Test location', 'Test description', '2018-06-12', '2018-06-13', 1)"
-  )
-end

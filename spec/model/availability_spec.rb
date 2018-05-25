@@ -23,7 +23,8 @@ describe Availability do
   let(:test_room) { Room.create()}
 
   before do
-    test_room
+    add_user_direct_to_db
+    add_room_direct_to_db
     test_slot
   end
 
