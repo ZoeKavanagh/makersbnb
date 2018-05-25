@@ -9,7 +9,7 @@ class Booking
   property :to, Date
   property :status, Enum[ :pending, :accepted, :declined], :default => :pending
   property :user_id, String
-  property :room_id, String
   property :comment, Text
 
+  belongs_to :room
 end

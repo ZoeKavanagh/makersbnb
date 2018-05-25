@@ -7,7 +7,7 @@ describe Booking do
   let(:comment) { 'I need an amazing room, with a fridge full of champagne!' }
   let(:status) { :pending }
   let(:user_id) { '2' }
-  let(:room_id) { '3' }
+  let(:room_id) { 1 }
 
   let(:test_booking) { Booking.create(
       from: from,
@@ -18,6 +18,7 @@ describe Booking do
     ) }
 
   before do
+    add_room_direct_to_db
     test_booking
   end
 

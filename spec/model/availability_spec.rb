@@ -9,6 +9,11 @@ describe Availability do
   let(:start_date) { '2018-05-25' }
   let(:date_inbetween) { '2018-05-26' }
   let(:end_date) { '2018-05-27' }
+  let(:all_the_dates) {[
+    Date.strptime(start_date, "%Y-%m-%d"),
+    Date.strptime(date_inbetween, "%Y-%m-%d"),
+    Date.strptime(end_date, "%Y-%m-%d")
+  ]}
 
   let(:test_slot) { Availability.create(
       date: date,
@@ -38,12 +43,8 @@ describe Availability do
 
   context '#create_dates' do
     it 'should take an array of dates and create a slot for each' do
-      all_the_dates = [
-        Date.strptime(start_date, "%Y-%m-%d"),
-        Date.strptime(date_inbetween, "%Y-%m-%d"),
-        Date.strptime(end_date, "%Y-%m-%d")
-       ]
       new_slot = Availability.create_dates(start_date, end_date, room_id)
+
       expect(Availability.all.last.date).to eq all_the_dates[2]
     end
   end
@@ -58,6 +59,14 @@ describe Availability do
       expect {
         Availability.valid_dates?([start_date, '55555'])
       }.to raise_error("Issue with format of date, must be yyyy-mm-dd")
+    end
+  end
+
+  context '#map_dates' do
+    it 'should return all the dates that the specific room is avaliable for' do
+      all_the_dates_nice_format = all_the_dates.map { |date| "#{date.day}/#{date.month}/#{date.year}" }
+      expected_return = "<div class='item' data-value='1'>#{all_the_dates_nice_format[0]}</div>"
+      expect(Availability.map_dates(room_id)).to eq [expected_return]
     end
   end
 end

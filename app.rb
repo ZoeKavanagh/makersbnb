@@ -21,18 +21,24 @@ class Makersbnb < Sinatra::Base
     erb :index
   end
 
-  get '/bookings/new' do
+  get '/bookings/new/:room_id' do
+    if session[:user_id] == nil
+      flash[:notice] = 'Cannot make booking if not logged in'
+      redirect '/sessions/new'
+    end
+    @room_id = params[:room_id]
+    @available_dates = Availability.map_dates(@room_id)
     erb :'bookings/new'
   end
 
-  post '/bookings/new' do
+  post '/bookings/new/:room_id' do
     Booking.create(
-        from: params[:start_date],
-        to: params[:end_date],
-        user_id: '1',
-        room_id: '1',
-        comment: params[:comments]
-      )
+      from: params[:start_date],
+      to: params[:end_date],
+      user_id: session[:user_id],
+      room_id: params[:room_id],
+      comment: params[:comments]
+    )
     redirect '/bookings/requests'
   end
 
@@ -51,7 +57,7 @@ class Makersbnb < Sinatra::Base
       name: params[:name],
       location: params[:location],
       description: params[:description],
-      user_id: '1',
+      user_id: session[:user_id],
     )
     Availability.create_dates(params[:start_date], params[:end_date], new_room.id)
 
@@ -102,7 +108,7 @@ class Makersbnb < Sinatra::Base
 
   post '/sessions/destroy' do
     session.clear
-    p session[:user_id]
+    session[:user_id]
     flash[:notice] = 'You have signed out.'
     redirect('/')
   end

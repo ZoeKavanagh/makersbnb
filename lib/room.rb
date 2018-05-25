@@ -13,5 +13,6 @@ class Room
   property :user_id, String
 
   has n, :availability
+  has n, :booking
 
 end

@@ -23,9 +23,10 @@ SimpleCov.start
 
 RSpec.configure do |config|
   config.before(:each) do
-end
+    @connection = PG.connect(dbname: 'makersbnb_test')
+  end
 
-config.before(:each) do
-  DataMapper.auto_migrate!
-end
+  config.before(:each) do
+    DataMapper.auto_migrate!
+  end
 end
