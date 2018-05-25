@@ -35,7 +35,7 @@
                 <a href="/bookings/new" id="reserve-room-menu-item" class="item"><i class="calendar outline icon"></i> Book a room</a>
                 <form id="myHiddenFormId" action="/sessions/destroy" method="post">
                   <input type="hidden" name="myParameterName" value="myParameterValue">
-                  <button class="ui button" type="submit" id="submit-button"><i class="calendar sign out icon"></i> Sign-out</button>
+                  <button class="item" type="submit" id="submit-button"><i class="calendar sign out alternate icon"></i> Sign out</button>
                 </form>
               <% end %>
               <% if !session[:user_name] %>
