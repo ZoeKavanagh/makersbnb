@@ -18,12 +18,8 @@ feature 'Bookings-new page' do
     expect(page).to have_content('Complete this form to reserve a room.')
   end
 
-  scenario 'start date appears' do
-    expect(page).to have_css('input#start-date-field')
-  end
-
-  scenario 'end date appears' do
-    expect(page).to have_css('input#end-date-field')
+  scenario 'availability field appears' do
+    expect(page).to have_css('div#availability-field')
   end
 
   scenario 'comments field appears' do
