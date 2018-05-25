@@ -25,6 +25,12 @@ class Availability
     true
   end
 
+  def self.map_dates(room_id)
+    Availability.all(:room_id => room_id).map { |slot|
+      "<div class='item' data-value='#{slot.id}'>#{slot.date.day}/#{slot.date.month}/#{slot.date.year}</div>"
+    }
+  end
+
   private
 
   def self.dates_calculation(start_date, end_date)

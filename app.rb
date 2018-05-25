@@ -27,6 +27,7 @@ class Makersbnb < Sinatra::Base
       redirect '/sessions/new'
     end
     @room_id = params[:room_id]
+    @available_dates = Availability.map_dates(@room_id)
     erb :'bookings/new'
   end
 

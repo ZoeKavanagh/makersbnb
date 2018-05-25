@@ -23,4 +23,7 @@ $(document).ready(function() {
     type: 'date',
     formatter: { date: dateFormatter }
   })
+  
+  $('.ui.dropdown').dropdown();
+
 });
