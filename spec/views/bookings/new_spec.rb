@@ -2,7 +2,7 @@ feature 'Bookings-new page' do
 
   before do
     full_log_in_journey
-    visit '/bookings/new'
+    visit '/bookings/new/1'
   end
 
 

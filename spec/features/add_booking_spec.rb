@@ -1,10 +1,17 @@
 feature 'add booking' do
   context 'sucessfully add bookings' do
 
+    let(:name) { 'Champagne Central' }
+    let(:location) { 'London' }
+    let(:description) { 'Booooooze!' }
+    let(:start_date) { '2018-11-29' }
+    let(:end_date) { '2018-11-30' }
+
     before do
       full_log_in_journey
-      visit '/bookings/new'
-      fill_in_and_submit
+      rooms_fill_in_and_submit(name, location, description, start_date, end_date)
+      visit '/bookings/new/1'
+      booking_fill_in_and_submit
     end
 
     scenario 'fill in form' do
@@ -20,7 +27,7 @@ feature 'add booking' do
   end
 
   scenario 'redirects to log in page if not logged in' do
-    visit '/bookings/new'
+    visit '/bookings/new/1'
     expect(page).to have_content 'Cannot make booking if not logged in'
   end
 end

@@ -21,22 +21,23 @@ class Makersbnb < Sinatra::Base
     erb :index
   end
 
-  get '/bookings/new' do
+  get '/bookings/new/:room_id' do
     if session[:user_id] == nil
       flash[:notice] = 'Cannot make booking if not logged in'
       redirect '/sessions/new'
     end
+    @room_id = params[:room_id]
     erb :'bookings/new'
   end
 
-  post '/bookings/new' do
+  post '/bookings/new/:room_id' do
     Booking.create(
-        from: params[:start_date],
-        to: params[:end_date],
-        user_id: session[:user_id],
-        room_id: '1',
-        comment: params[:comments]
-      )
+      from: params[:start_date],
+      to: params[:end_date],
+      user_id: session[:user_id],
+      room_id: params[:room_id],
+      comment: params[:comments]
+    )
     redirect '/bookings/requests'
   end
 

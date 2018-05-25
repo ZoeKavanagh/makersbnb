@@ -1,7 +1,5 @@
 feature 'index page' do
-
   context 'on loading' do
-
     before do
       visit '/'
     end
@@ -21,7 +19,5 @@ feature 'index page' do
     scenario 'tagline is visible' do
       expect(page).to have_content('Need a room? We\'ve got rooms.')
     end
-
   end
-
 end
