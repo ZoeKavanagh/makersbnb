@@ -23,12 +23,10 @@
       <div class="one wide field"><label>Select Date</label></div>
       <div class="five wide field">
         <div class="ui selection dropdown" id="availability-field">
-          <input type="hidden" name="slot">
           <i class="dropdown icon"></i>
-          <div class="default text">Select the date you want</div>
-          <div class="menu">
+          <select class="ui dropdown" name="slot" id="availability-menu">
             <%= @available_dates.join("") %>
-          </div>
+          </select>
         </div>
       </div>
     </div>

@@ -32,14 +32,14 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/bookings/new/:room_id' do
-    Booking.create(
+     Booking.create(
       comment: params[:comments],
       user_id: session[:user_id],
       room_id: params[:room_id],
       availability_id: params[:slot].to_i,
     )
     flash[:positive] = "Booking received"
-    redirect '/bookings/requests'
+    redirect '/'
   end
 
   get '/bookings/requests' do

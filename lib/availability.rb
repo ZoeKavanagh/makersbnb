@@ -29,7 +29,7 @@ class Availability
 
   def self.map_dates(room_id)
     Availability.all(:room_id => room_id).map { |slot|
-      "<div class='item' data-value='#{slot.id}'>#{slot.date.day}/#{slot.date.month}/#{slot.date.year}</div>"
+      "<option id='slot-#{slot.id}' value='#{slot.id}'>#{slot.date.day}/#{slot.date.month}/#{slot.date.year}</option>"
     }
   end
 
