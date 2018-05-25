@@ -4,13 +4,15 @@ require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
 require 'capybara'
 require 'capybara/rspec'
-require './spec/helpers/bookings'
-require './spec/helpers/rooms'
-require './spec/helpers/list_rooms'
-require './spec/helpers/sign_up_log_in'
 require 'rspec'
 require 'simplecov'
 require 'simplecov-console'
+
+require './spec/helpers/bookings'
+require './spec/helpers/database'
+require './spec/helpers/list_rooms'
+require './spec/helpers/rooms'
+require './spec/helpers/sign_up_log_in'
 
 Capybara.app = Makersbnb
 

@@ -10,9 +10,9 @@ class Room
   property :description, String
   property :from, Date
   property :to, Date
-  property :user_id, String
+
+  belongs_to :user
 
   has n, :availability
   has n, :booking
-
 end

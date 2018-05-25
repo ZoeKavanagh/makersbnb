@@ -11,7 +11,7 @@ DataMapper::Property::String.length(255)
 
 DataMapper.finalize()
 
-Booking.auto_upgrade!
-Availability.auto_upgrade!
-Room.auto_upgrade!
 User.auto_upgrade!
+Room.auto_upgrade!
+Availability.auto_upgrade!
+Booking.auto_upgrade!

@@ -1,6 +1,6 @@
 feature 'list rooms' do
   before do
-    add_rooms_manually
+    add_all_direct_to_db
     visit '/'
   end
 
@@ -10,6 +10,7 @@ feature 'list rooms' do
 
   scenario 'lists all available rooms' do
     add_rooms_manually
+    visit '/'
     expect(page).to have_content 'We have champagne.'
     expect(page).to have_content 'Sorry we only have prosecco.'
   end

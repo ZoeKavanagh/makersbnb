@@ -9,4 +9,6 @@ class User
   property :email, String
   property :password, BCryptHash
 
+  has n, :booking
+
 end

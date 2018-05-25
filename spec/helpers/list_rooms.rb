@@ -1,19 +1,19 @@
 def add_rooms_manually
   Room.create(
-    from: '2018-07-12',
-    to: '2018-07-13',
-    user_id: '3',
+    user_id: 1,
+    name: 'That fancy place',
     location: 'London',
     description: 'We have champagne.',
-    name: 'That fancy place'
-    )
+    from: '2018-07-12',
+    to: '2018-07-13'
+  )
 
-    Room.create(
-      from: '2018-06-12',
-      to: '2018-06-13',
-      user_id: '4',
-      location: 'London',
-      description: 'Sorry we only have prosecco.',
-      name: 'That other fancy place'
-      )
+  Room.create(
+    user_id: 1,
+    name: 'That other fancy place',
+    location: 'London',
+    description: 'Sorry we only have prosecco.',
+    from: '2018-06-12',
+    to: '2018-06-13'
+  )
 end

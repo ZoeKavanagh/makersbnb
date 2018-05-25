@@ -9,6 +9,8 @@ class Availability
 
   belongs_to :room
 
+  has n, :booking
+
   def self.create_dates(start_date, end_date, room_id)
     array = self.dates_calculation(start_date, end_date)
     array.each do |date|
