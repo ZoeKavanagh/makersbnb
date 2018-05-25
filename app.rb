@@ -37,7 +37,7 @@ class Makersbnb < Sinatra::Base
       comment: params[:comments],
       user_id: session[:user_id],
       room_id: params[:room_id],
-      availablity_id: params[:slot].to_i,
+      availability_id: params[:slot].to_i,
     )
     redirect '/bookings/requests'
   end
