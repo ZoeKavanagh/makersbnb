@@ -42,14 +42,14 @@
             </div>
           </div>
         </div>
-
+<% flash.keys.each do |type| %>
 <div class="ui container">
   <div class="ui grid centered" >
     <div class="twelve wide column">
       <div class="ui success message">
           <i class="close icon"></i>
-            <%= styled_flash %>
-
+            <!-- <%= styled_flash %> -->
+            <%=flash[type] %>
             <% if session[:user_name] %>
             <%= "Welcome #{session[:user_name]}" %>
             <% end %>
@@ -60,3 +60,4 @@
       </div>
     </div>
   </div>
+  <% end %>
