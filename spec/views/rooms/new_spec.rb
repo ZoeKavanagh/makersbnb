@@ -1,6 +1,7 @@
 feature 'Rooms-new page' do
 
   before do
+    full_log_in_journey
     visit '/rooms/new'
   end
 

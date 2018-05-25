@@ -66,7 +66,7 @@ describe Availability do
   context '#map_dates' do
     it 'should return all the dates that the specific room is avaliable for' do
       all_the_dates_nice_format = all_the_dates.map { |date| "#{date.day}/#{date.month}/#{date.year}" }
-      expected_return = "<div class='item' data-value='1'>#{all_the_dates_nice_format[0]}</div>"
+      expected_return = "<option id='slot-1' value='1'>#{all_the_dates_nice_format[0]}</option>"
       expect(Availability.map_dates(room_id)).to eq [expected_return]
     end
   end

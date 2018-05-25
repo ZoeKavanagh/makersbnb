@@ -15,7 +15,7 @@
    <script src="/css/components/sidebar.js"></script>
    <script src="/css/components/transition.js"></script>
    <script src="/css/components/dropdown.js"></script>
-   
+
   </head>
   <body>
 
@@ -25,7 +25,7 @@
 
         <div class="ui container">
           <div class="ui large secondary inverted pointing menu">
-            <a href="/"><img src="../images/logo.png" alt="makersbnb" width="40px" height="40px" id="logo" /></a>
+            <a href="/"><img src="/images/logo.png" alt="makersbnb" width="40px" height="40px" id="logo" /></a>
             <div class="right item">
               <a href="/" id="home-menu-item" class="item"><i class="home icon"></i> Home</a>
               <% if session[:user_name] %>
@@ -46,20 +46,4 @@
           </div>
         </div>
 
-<div class="ui container">
-  <div class="ui grid centered" >
-    <div class="twelve wide column">
-      <div class="ui success message">
-          <i class="close icon"></i>
-            <%= styled_flash %>
-
-            <% if session[:user_name] %>
-            <%= "Welcome #{session[:user_name]}" %>
-            <% end %>
-
-            <!-- <%= flash[:notice] %> -->
-          <!-- <p>Just testing</p> -->
-        </div>
-      </div>
-    </div>
-  </div>
+        <%= erb :'components/flash' %>

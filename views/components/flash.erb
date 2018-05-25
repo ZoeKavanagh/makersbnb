@@ -1,0 +1,12 @@
+<% flash.keys.each do |type| %>
+<div class="ui container">
+  <div class="ui grid centered" >
+    <div class="twelve wide column">
+      <div class="ui success message">
+          <i class="close icon"></i>
+            <%=flash[type] %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>

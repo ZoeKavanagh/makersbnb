@@ -20,8 +20,6 @@ feature 'add booking' do
 
     scenario 'booking data added to database' do
       expect(Booking.all.last).to be_instance_of(Booking)
-      expect(Booking.all.last.from.strftime("%Y-%m-%d")).to eq '2018-05-29'
-      expect(Booking.all.last.to.strftime("%Y-%m-%d")).to eq '2018-05-30'
       expect(Booking.all.last.comment).to eq 'I want a nice room for a night'
     end
   end

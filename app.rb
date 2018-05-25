@@ -23,7 +23,7 @@ class Makersbnb < Sinatra::Base
 
   get '/bookings/new/:room_id' do
     if session[:user_id] == nil
-      flash[:notice] = 'Cannot make booking if not logged in'
+      flash[:negative] = 'Cannot make booking if not logged in'
       redirect '/sessions/new'
     end
     @room_id = params[:room_id]
@@ -32,14 +32,14 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/bookings/new/:room_id' do
-    p params[:slot].to_i
-    p Booking.create(
+     Booking.create(
       comment: params[:comments],
       user_id: session[:user_id],
       room_id: params[:room_id],
       availability_id: params[:slot].to_i,
     )
-    redirect '/bookings/requests'
+    flash[:positive] = "Booking received"
+    redirect '/'
   end
 
   get '/bookings/requests' do
@@ -47,6 +47,10 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/rooms/new' do
+    if session[:user_id] == nil
+      flash[:negative] = 'Cannot add room if not logged in'
+      redirect '/sessions/new'
+    end
     erb :'rooms/new'
   end
 
@@ -60,8 +64,8 @@ class Makersbnb < Sinatra::Base
       user_id: session[:user_id],
     )
     Availability.create_dates(params[:start_date], params[:end_date], new_room.id)
-
-    redirect '/rooms/requests'
+    flash[:positive] = "Room received"
+    redirect '/'
   end
 
   get '/rooms/requests' do
@@ -98,9 +102,10 @@ class Makersbnb < Sinatra::Base
     if @user && (@user.password == params[:password])
       session[:user_id] = @user.id
       session[:user_name] = @user.name
+      flash[:positive] = "Welcome #{session[:user_name]}"
       redirect('/')
     else
-      flash[:notice] = 'Username or password incorrect. Access denied. denied.'
+      flash[:negative] = 'Username or password incorrect. Access denied. denied.'
       redirect('/sessions/new')
     end
 
